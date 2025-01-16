@@ -27,7 +27,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/project-frontend:latest,${{ secrets.DOCKER_USERNAME }}/project-api:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/frontend:latest,${{ secrets.DOCKER_USERNAME }}/api:latest
 
       - name: Deploy services
         run: |
