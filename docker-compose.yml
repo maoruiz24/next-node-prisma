@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: ./backend
+    ports:
+      - "4000:4000"
+    environment:
+      DATABASE_URL: "postgresql://admin:admin@db:5432/db_test"
+    depends_on:
+      - db
+
+  db:
+    build: .\database
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
